@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roypharm Chemist — Directions</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+  <style>
+    :root {
+      --brand:#2563eb; 
+      --accent:#e11d48;
+      --film:#ffffff;
+      --hole:#e5e7eb;
+    }
+
+    html,body {
+      scroll-behavior:smooth;
+      background:#f9fafb;
+      color:#1e293b;
+      font-family:'Inter', sans-serif;
+    }
+
+    /* Header */
+    .glass {
+      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.85);
+      border-bottom: 1px solid rgba(203,213,225,0.5);
+    }
+
+    /* Hero background */
+    .hero-bg {
+      background: radial-gradient(1200px 500px at 50% -10%, rgba(37,99,235,.15), transparent 60%),
+                  radial-gradient(800px 400px at 10% 30%, rgba(225,29,72,.12), transparent 60%),
+                  radial-gradient(900px 600px at 90% 50%, rgba(16,185,129,.1), transparent 60%);
+    }
+
+    /* Film strip layout */
+    .reel {
+      position: relative;
+      background: var(--film);
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.1), inset 0 0 0 2px #e2e8f0;
+      padding: 18px 54px;
+      transform-origin: top center;
+    }
+
+    /* Perforated edges */
+    .reel::before,
+    .reel::after {
+      content:"";
+      position:absolute;
+      top:12px; bottom:12px;
+      width:28px;
+      background:
+        radial-gradient(circle 6px at 50% 10%, #cbd5e1 39%, transparent 40%) 0 0/100% 64px,
+        linear-gradient(var(--hole), var(--hole));
+      border-radius: 12px;
+      box-shadow: inset 0 0 0 1px #d1d5db;
+    }
+    .reel::before{ left:12px; }
+    .reel::after { right:12px; }
+
+    /* Frames */
+    .frame {
+      aspect-ratio: 16 / 10;
+      background:#f3f4f6;
+      border-radius: 12px;
+      overflow:hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,.08), inset 0 0 0 2px #e5e7eb;
+      transform: perspective(900px) rotateX(0deg);
+    }
+
+    .frame img {
+      width:100%; height:100%;
+      object-fit:cover; object-position:center;
+      display:block;
+      filter:saturate(1.05) contrast(1.05);
+      transform: scale(1.02);
+    }
+
+    /* Connectors */
+    .connector {
+      height: 18px;
+      margin: 10px 0 26px;
+      background:
+        repeating-linear-gradient(90deg, #e5e7eb 0 20px, #f3f4f6 20px 40px);
+      border-radius: 8px;
+      box-shadow: inset 0 0 0 1px #d1d5db, 0 2px 6px rgba(0,0,0,.08);
+      opacity:.9;
+    }
+
+    /* WhatsApp button */
+    .fab {
+      position:fixed; right:16px; bottom:18px; z-index:50;
+      animation: bob 2.8s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-6px); }
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- Header -->
+  <header class="fixed top-0 inset-x-0 z-40 glass">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-xl bg-blue-100 grid place-items-center">
+          <span class="text-blue-600 font-black">Rx</span>
+        </div>
+        <div>
+          <p class="text-slate-800 font-semibold leading-none">Roypharm Chemist</p>
+          <p class="text-slate-500 text-xs leading-none mt-0.5">Thika • Open Daily</p>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html" id="locateLink"
+           class="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-medium hover:bg-blue-500 transition">
+          BACK
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="pt-28 hero-bg">
+    <div class="max-w-6xl mx-auto px-4 py-20 text-center">
+      <h1 class="text-4xl md:text-6xl font-black tracking-tight text-gray-800">
+        Visit <span class="text-blue-600">Roypharm Chemist</span> in Thika
+      </h1>
+      <p class="mt-4 text-gray-600 text-lg max-w-3xl mx-auto">
+        Follow the film reel below to find your way to our pharmacy. Reliable directions and friendly service await you.
+      </p>
+      <div class="mt-10">
+        <button id="scrollCta"
+          class="px-6 py-3 rounded-full bg-blue-600 text-white font-medium hover:bg-blue-500 transition">
+          Start the Story ↓
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Film Story -->
+  <section id="reel" class="relative py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="reel">
+        <div class="frame"><img src="20251023_100749.jpg" alt="Ola Energy / Thika vicinity near Roypharm Chemist"></div>
+        <div class="connector"></div>
+
+        <div class="frame"><img src="20251023_100855.jpg" alt="Roypharm Chemists storefront close-up"></div>
+        <div class="connector"></div>
+
+        <div class="frame"><img src="20251023_100957.jpg" alt="Street view toward Roypharm Chemists"></div>
+        <div class="connector"></div>
+
+        <div class="frame"><img src="20251023_101134.jpg" alt="Roundabout area near Roypharm / Thika"></div>
+        <div class="connector"></div>
+
+        <div class="frame relative">
+          <img src="20251023_101014.jpg" alt="Near the roundabout / approach to Roypharm">
+          <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-white via-white/90 to-transparent text-center">
+            <a href="https://www.google.com/maps/search/?api=1&query=Roypharm+Chemist+Thika"
+               target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-500">
+              Open in Google Maps
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z"/><path d="M5 5h5V3H3v7h2V5z"/><path d="M19 19h-5v2h7v-7h-2v5z"/><path d="M5 19v-5H3v7h7v-2H5z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 text-center">
+        <div class="inline-block rounded-2xl border border-slate-200 bg-white px-6 py-5 text-gray-700">
+          <p class="font-semibold">We’re located along Kenyatta Highway, Thika — opposite the roundabout.</p>
+          <p class="text-gray-500 text-sm mt-1">Tap “Open in Google Maps” on the last frame for live directions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-slate-200 bg-white text-center">
+    <p class="text-gray-700 font-semibold">Roypharm Chemist — Thika</p>
+    <p class="text-gray-500 text-sm mt-1">© <span id="year"></span> All rights reserved.</p>
+  </footer>
+
+  <!-- Floating contact -->
+  <a class="fab inline-flex items-center gap-2 rounded-full px-4 py-2 bg-emerald-500 text-white shadow-lg hover:scale-105 transition"
+     href="https://wa.me/254700000000?text=Hello%20Roypharm%20Chemist" target="_blank" rel="noopener">
+     Chat on WhatsApp
+  </a>
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
+          onerror="var s=document.createElement('script');s.src='gsap.min.js';document.head.appendChild(s);"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+          onerror="var s=document.createElement('script');s.src='ScrollTrigger.min.js';document.head.appendChild(s);"></script>
+
+  <script>
+    (function ready(fn){/in/.test(document.readyState)?setTimeout(ready,9,fn):fn()})(function(){
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const scrollTarget = document.getElementById('reel');
+      document.getElementById('scrollCta').addEventListener('click', ()=> scrollTarget.scrollIntoView({behavior:'smooth'}));
+      document.getElementById('locateLink').addEventListener('click', e=>{e.preventDefault(); scrollTarget.scrollIntoView({behavior:'smooth'});});
+
+      if (window.gsap && gsap.registerPlugin) gsap.registerPlugin(window.ScrollTrigger || {});
+      gsap.from("header", {y:-60, opacity:0, duration:.8, ease:"power2.out"});
+      gsap.from(".hero-bg h1",{opacity:0, y:20, duration:.8, delay:.15, ease:"power2.out"});
+      gsap.from(".hero-bg p",{opacity:0, y:18, duration:.8, delay:.25, ease:"power2.out"});
+
+      const reel = document.querySelector(".reel");
+      const frames = gsap.utils.toArray(".frame");
+      const connectors = gsap.utils.toArray(".connector");
+      const tl = gsap.timeline({
+        scrollTrigger:{
+          trigger:"#reel", start:"top center+=40", end:"+=2200", scrub:0.6, pin:true
+        }
+      });
+
+      tl.from(reel,{y:-100, rotationX:6, transformOrigin:"top center", ease:"none", duration:1});
+      frames.forEach((f,i)=>{
+        tl.to(f.querySelector("img"),{scale:1.08,duration:0.8,ease:"power1.inOut"},">-0.2");
+        tl.fromTo(f,{filter:"brightness(0.95)"},{filter:"brightness(1.1)",duration:0.6,ease:"power1.inOut"}, "<");
+        if(connectors[i]) tl.from(connectors[i],{xPercent:-20,opacity:0.7,duration:0.5,ease:"power1.out"}, "<");
+        tl.to(reel,{y:"+=28",duration:0.45,ease:"power1.inOut"}, "<");
+      });
+      tl.to(frames[frames.length-1],{scale:1.03,duration:0.4,ease:"power1.inOut"});
+    });
+  </script>
+</body>
+</html>
